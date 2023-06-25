@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="px-6 pt-6 2xl:container">
+    <section class="container px-4 mx-auto">
+        <label for="name" class="text-gray-700">Daftar Barang</label>
+        <table class="table-auto">
+            <thead>
+              <tr>
+                <th>Kode Barang</th>
+                <th>Nama</th>
+                <th>Stok</th>
+                <th>Harga</th>
+                <th>Link Gambar</th>
+                <th>Jenis</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+                {% for barang in barangs %}
+              <tr>
+                <td>{{ Barang.kodebrg }}</td>
+                <td>{{ Barang.nama }}</td>
+                <td>{{ Barang.stok }}</td>
+                <td>{{ Barang.harga }}</td>
+                <td>{{ Barang.link_gbr }}</td>
+                <td>{{ Barang.jenis_id_id }}</td>
+              </tr>
+              <tr>
+                 {% endfor %}
+            </tbody>
+           
+          </table>
+    </section>
+</div>
+{% endblock %}
