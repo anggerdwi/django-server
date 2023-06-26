@@ -3,7 +3,7 @@
   <div class="px-6 pt-6 2xl:container">
     <section class="container px-4 mx-auto">
         <label for="name" class="text-gray-700">Daftar Barang</label>
-        <table class="table-auto">
+        <table class="min-w-full divide-y mt-4 divide-gray-200 light:divide-gray-700">
             <thead>
               <tr>
                 <th>Kode Barang</th>
@@ -12,11 +12,12 @@
                 <th>Harga</th>
                 <th>Link Gambar</th>
                 <th>Jenis</th>
+                <th>aksi</th>
               </tr>
             </thead>
             
             <tbody>
-                {% for barang in barangs %}
+                {% for Barang in barangs %}
               <tr>
                 <td>{{ Barang.kodebrg }}</td>
                 <td>{{ Barang.nama }}</td>
@@ -24,12 +25,21 @@
                 <td>{{ Barang.harga }}</td>
                 <td>{{ Barang.link_gbr }}</td>
                 <td>{{ Barang.jenis_id_id }}</td>
+                <td>
+                  <button class="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-2 border border-green-700 rounded">
+                    Edit
+                  </button>
+                  <button class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-2 border border-red-700 rounded">
+                    Hapus
+                  </button>
+                  
+                </td>
               </tr>
               <tr>
                  {% endfor %}
             </tbody>
            
           </table>
+          {% endblock %}
     </section>
 </div>
-{% endblock %}

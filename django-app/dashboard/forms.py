@@ -8,11 +8,10 @@ class FormBarang(ModelForm):
         fields='__all__'
 
         widgets = {
-            'kodebrg' : forms.TextInput({'class' : 'form-control'}),
-            'nama' : forms.TextInput({'class' : 'form-control'}),
-            'stok' : forms.NumberInput({'class' : 'form-control'}),
-            'harga' : forms.NumberInput({'class' : 'form-control'}),
-            'link_gbr' : forms.TextInput({'class' : 'form-control'}),
-            'jenis_id' : forms.Select({'class' : 'form-control'}),
-
+            'kodebrg' : forms.TextInput({'class' : 'mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900'}),
+            'nama' : forms.TextInput({'class' : 'mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900'}),
+            'stok' : forms.NumberInput({'class' : 'mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900'}),
+            'harga' : forms.NumberInput({'class' : 'mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900'}),
+            'link_gbr' : forms.TextInput({'class' : 'mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900'}),
+            'jenis_id' : forms.Select({'class' : 'mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900'}),
         }

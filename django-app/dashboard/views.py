@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from dashboard.forms import FormBarang
 from dashboard.models import Barang
 
@@ -12,7 +12,13 @@ def Barang_View(request):
     return render(request,'tampil_brg.html',konteks)
 
 def tambah_barang(request):
-    form=FormBarang()
+    form=FormBarang(request.POST or None, request.FILES or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+        return redirect('/vbrg')
+        pass
+    
     konteks={
         'form' : form,
     }
