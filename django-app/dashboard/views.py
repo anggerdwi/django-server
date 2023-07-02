@@ -1,6 +1,40 @@
 from django.shortcuts import render, redirect
 from dashboard.forms import FormBarang
 from dashboard.models import Barang
+from django.contrib import messages
+from django.db.models import Q
+from dashboard.views import *
+
+# def search(request):
+#     search_post = request.GET.get('search')
+
+#     if search_post:
+#         posts = post.objects.filter(Q(title__icontains=search_post) & Q(content__icontains=search_post))
+#     else:
+#         posts = post.objects.all().order_by("-data_created")
+#         return render(request,'/vbrg')
+
+def delete_brg(request,id_barang):
+    barangs=Barang.objects.filter(id=id_barang)
+    barangs.delete()
+    messages.success(request,"Data berhasil dihapus!")
+    return redirect('/vbrg')
+
+def ubah_brg(request,id_barang):
+    barangs=Barang.objects.get(id=id_barang)
+    if request.POST:
+        form=FormBarang(request.POST,instance=barangs)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Data berhasil diubah!')
+            return redirect('/vbrg')
+    else:
+        form=FormBarang(instance=barangs)
+        konteks = {
+            'form':form,
+            'barangs':barangs
+        }
+    return render(request,'ubah_brg.html',konteks)
 
 def Barang_View(request):
     barangs=Barang.objects.all()

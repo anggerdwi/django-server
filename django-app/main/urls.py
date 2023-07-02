@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.http import HttpResponse
 from django.shortcuts import render
-from dashboard.views import produk, tambah_barang, Barang_View
+from dashboard.views import produk, tambah_barang, Barang_View, ubah_brg, delete_brg
 
 def main(request):
     return HttpResponse("selamat datang")
@@ -35,4 +35,7 @@ urlpatterns = [
     path('products/',produk),
     path('addbrg/',tambah_barang),
     path('vbrg/',Barang_View),
+    path('ubah/<int:id_barang>', ubah_brg, name = 'ubah_brg'),
+    path('delete/<int:id_barang>', delete_brg, name = 'delete_brg'),
+    # path('search/<int:id_barang>', search_brg, name = 'search'),
 ]
