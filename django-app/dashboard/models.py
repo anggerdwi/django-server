@@ -17,5 +17,10 @@ class Barang(models.Model):
     waktu_posting=models.DateTimeField(auto_now_add=True)
     jenis_id=models.ForeignKey(Jenis, on_delete=models.CASCADE,null=True)
 
+class Kategori(models.Model):
+    kodeKategori=models.CharField(max_length=8)
+    nama=models.CharField(max_length=50)
+    deskripsi=models.IntegerField()
+
     def __str__(self):
         return self.nama

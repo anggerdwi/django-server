@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from dashboard.forms import FormBarang
-from dashboard.models import Barang
+from dashboard.forms import FormBarang, FormKategori
+from dashboard.models import Barang, Kategori
 from django.contrib import messages
 from django.db.models import Q
 from dashboard.views import *
@@ -13,6 +13,9 @@ from dashboard.views import *
 #     else:
 #         posts = post.objects.all().order_by("-data_created")
 #         return render(request,'/vbrg')
+
+
+
 
 def delete_brg(request,id_barang):
     barangs=Barang.objects.filter(id=id_barang)
@@ -65,3 +68,29 @@ def produk(request):
     }
     return render(request,'produk.html',konteks)
 # Create your views here.
+
+
+# BAGIAN KATEGORI
+def tambah_Kategori(request):
+    form=FormKategori(request.POST or None, request.FILES or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+        return redirect('/vkategori')
+        pass
+    
+    konteks={
+        'form' : form,
+    }
+    return render(request,'tambah_kategori.html',konteks)
+
+def kategori_view(request):
+    category=Kategori.objects.all().values()
+
+    konteks={
+        'category':category,
+    }
+
+    return render(request,'tampil_kategori.html',konteks)
+
+    
